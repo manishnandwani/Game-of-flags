@@ -1,0 +1,48 @@
+<html ng-app="game">
+    <head>
+        <script src="node_modules/angular/angular.js"></script>
+        <link rel="stylesheet" href="node_modules/flag-icon-css/css/flag-icon.css">
+        <script src="app.js"></script>
+ 
+     <style >
+           .flag-icon{
+                width: 10em;
+                line-height: 5em; 
+           }
+           .center{
+               text-align: center;
+               
+           }
+           .back{
+            background-color: aqua;
+           }
+            
+        
+        </style>
+
+        <title>Game of flags</title>
+    </head>
+    <body class="back">
+
+        <div  ng-controller="gameCtrl as game">
+            <h1  >Game Of Flags</h1>
+
+            <span class="flag-icon flag-icon-{{game.iso}}"></span>
+            <!-- <input type="text" ng-model="game.country"> -->
+        
+       
+            <h1 ng-if="game.correct">Correct</h1>
+            <h1 ng-if="!game.correct">Incorrect</h1>
+            
+            <div class="left">
+                <button ng-click="game.array()">next</button>
+                    <ul ng-repeat="opt in game.options">
+                      <h3>  <li><input type="radio" name ="country" ng-click="game.check($index)" ng-disabled="game.disabled">{{game.countries[opt].name}}</li></h3>
+                    </ul>
+            </div>
+            
+
+        </div>
+        
+    </body>
+</html>
